@@ -7,13 +7,15 @@ require('@babel/polyfill')
 module.exports = {
     // here we can provide the config details
 
-    // this can be a relative path
-    entry: ['@babel/polyfill', './src/index.js'],
+    entry: {
+        index: ['@babel/polyfill', './src/index.js'],
+        about: ['@babel/polyfill', './src/about.js']
+    },
     output: {
-        // but this has to be an absolute path. 
-        // ? __dirname is a node.js global variable for the absolute path to the project
+        // this has to be an absolute path. 
+        // __dirname is a node.js global variable for the absolute path to the project
         path: path.resolve(__dirname, 'public/scripts'),
-        filename: 'bundle.js'
+        filename: '[name]-bundle.js'
     },
     module: {
         rules: [{
